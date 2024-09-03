@@ -123,8 +123,8 @@ jobs:
       run: mvn -version
       
     - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+      with:
+        python-version: '3.12'
           
     - run: pip install pyyaml requests boto3 ruamel_yaml
            
