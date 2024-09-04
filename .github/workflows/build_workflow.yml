@@ -136,11 +136,11 @@ jobs:
     
     - name: Build, Test and Publish artifact to Exchange - Develop Branch
       if: ${{ github.event.ref == 'refs/heads/develop' }}
-      run: mvn clean deploy -B -s .m2/settings.xml -Denv=${{ vars.APPLICATION_ENV }} -Dsecure.key.titan=${{ secrets.SECURE_ENCRYPT_KEY }}
+      run: mvn clean deploy -B -s .m2/settings.xml -Denv=${{ vars.APPLICATION_ENV }} -Dsecure.key.imb=${{ secrets.SECURE_ENCRYPT_KEY }}
 
     - name: Build, Test and Publish artifact to Exchange - Release Branch
       if: ${{ contains(github.event.ref,'refs/heads/releases') }}
-      run: mvn clean deploy -B -s .m2/settings.xml -Denv=${{ vars.APPLICATION_ENV }} -Dsecure.key.titan=${{ secrets.SECURE_ENCRYPT_KEY }}
+      run: mvn clean deploy -B -s .m2/settings.xml -Denv=${{ vars.APPLICATION_ENV }} -Dsecure.key.imb=${{ secrets.SECURE_ENCRYPT_KEY }}
 
     - name: Stamp artifact file name with commit hash
       run: |
