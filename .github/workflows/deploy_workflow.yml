@@ -61,7 +61,7 @@ on:
         required: true
       MULE_AP_CLIENT_SECRET:
         required: true
-      TITAN_BIZ_GROUP:
+      IMB_BIZ_GROUP:
         required: true
       MULE_AWS_S3_ACCESS_KEY:
         required: false
@@ -134,7 +134,7 @@ jobs:
       run: |
         mvn clean deploy -B -s .m2/settings.xml -DskipTests -DmuleDeploy \
         -Denv=${{ vars.APPLICATION_ENV }} \
-        -Dsecure.key.titan=${{ secrets.SECURE_ENCRYPT_KEY }} \
+        -Dsecure.key.imb=${{ secrets.SECURE_ENCRYPT_KEY }} \
         -Dap.client_id=${{ secrets.MULE_AP_CLIENT_ID }} \
         -Dap.client_secret=${{ secrets.MULE_AP_CLIENT_SECRET }} \
         -Dencrypt.key=${{ secrets.SECURE_ENCRYPT_KEY }} \
@@ -144,7 +144,7 @@ jobs:
         -Dch.space=${{ inputs.CLOUDHUB_PRIVATE_SPACE }} \
         -Dch.replicas=${{ inputs.CLOUDHUB_REPLICAS }} \
         -Dch.vCores=${{ inputs.CLOUDHUB_REPLICA_SIZE }} \
-        -Dap.businessGroup=${{ secrets.TITAN_BIZ_GROUP }} \
+        -Dap.businessGroup=${{ secrets.IMB_BIZ_GROUP }} \
         -Dapi.layer=${{ inputs.APP_LAYER }} \
         -Dap.generateDefaultPublicUrl=${{ inputs.GENERATE_PUBLIC_URL_FLAG }} \
         -Dap.clusteredFlag=${{ inputs.CLUSTER_ENABLED_FLAG }} \
@@ -161,7 +161,7 @@ jobs:
       run: |
         mvn clean deploy -B -s .m2/settings.xml -DskipTests -DmuleDeploy \
         -Denv=${{ vars.APPLICATION_ENV }} \
-        -Dsecure.key.titan=${{ secrets.SECURE_ENCRYPT_KEY }} \
+        -Dsecure.key.imb=${{ secrets.SECURE_ENCRYPT_KEY }} \
         -Dap.client_id=${{ secrets.MULE_AP_CLIENT_ID }} \
         -Dap.client_secret=${{ secrets.MULE_AP_CLIENT_SECRET }} \
         -Dencrypt.key=${{ secrets.SECURE_ENCRYPT_KEY }} \
@@ -171,7 +171,7 @@ jobs:
         -Dch.space=${{ inputs.CLOUDHUB_PRIVATE_SPACE }} \
         -Dch.replicas=${{ inputs.CLOUDHUB_REPLICAS }} \
         -Dch.vCores=${{ inputs.CLOUDHUB_REPLICA_SIZE }} \
-        -Dap.businessGroup=${{ secrets.TITAN_BIZ_GROUP }} \
+        -Dap.businessGroup=${{ secrets.IMB_BIZ_GROUP }} \
         -Dapi.layer=${{ inputs.APP_LAYER }} \
         -Dap.publicUrl=${{ inputs.CLOUDHUB_PUBLIC_URL }} \
         -Dap.generateDefaultPublicUrl=${{ inputs.GENERATE_PUBLIC_URL_FLAG }} \
