@@ -129,6 +129,11 @@ jobs:
         python-version: '3.12'
           
     - run: pip install pyyaml requests boto3 ruamel_yaml
+
+    - name: Dump GitHub workspace
+      env:
+        GITHUB_WORKSPACE: ${{ toJSON(github.workspace) }}
+      run: echo "$GITHUB_WORKSPACE"
            
     - name: Run script
       run: |
