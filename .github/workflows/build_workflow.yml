@@ -132,8 +132,8 @@ jobs:
 
     - name: Dump GitHub workspace
       env:
-        GITHUB_WORKSPACE: ${{ toJSON(github.workspace) }}
-      run: echo "$GITHUB_WORKSPACE"
+        GIT_WORKSPACE1: ${{ toJSON(github.workspace) }}
+      run: echo "$GIT_WORKSPACE1"
            
     - name: Run script
       run: |
