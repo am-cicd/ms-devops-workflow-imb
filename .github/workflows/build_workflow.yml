@@ -158,7 +158,7 @@ jobs:
       run: |
          python ${{ github.workspace }}/deployment-scripts/properties-injection.py \
            -e /home/runner/work/${{ env.REPO_NAME }}/${{ env.REPO_NAME }}/environment-config/${{ inputs.GITHUB_ENVIRONMENT }}/environment-properties.yaml \
-           -j /home/runner/work/${{ env.REPO_NAME }}/${{ env.REPO_NAME }}/target/${{ env.ARTIFACT_ID }}-${{ env.VERSION }}-mule-application.jar
+           -j /home/runner/work/${{ env.REPO_NAME }}/${{ env.REPO_NAME }}/target/mule-${{ env.ARTIFACT_ID }}-${{ env.VERSION }}-mule-application.jar
     
     - name: Build, Test and Publish artifact to Exchange - Develop Branch
       if: ${{ github.event.ref == 'refs/heads/develop' }}
