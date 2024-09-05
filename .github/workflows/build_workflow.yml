@@ -51,7 +51,7 @@ jobs:
       with:
         repository: am-cicd/ms-deploy-scripts
         path: deployment-scripts
-        ref: master
+        ref: main
         token: ${{ secrets.MULE_PAT }}
           
     - name : checkout config
@@ -59,13 +59,13 @@ jobs:
       with:
         repository: am-cicd/ms-env-config
         path: environment-config
-        ref: master
+        ref: main
         token: ${{ secrets.MULE_PAT }}
           
-    - name: Set up JDK 11
+    - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
-        java-version: '11'
+        java-version: '17'
         distribution: 'adopt'
         cache: 'maven'
         # restore-keys: |  ${{ runner.os }}-maven-
@@ -73,8 +73,8 @@ jobs:
     - name: Setup Maven Action
       uses: s4u/setup-maven-action@v1.2.1
       with:
-        java-version: '11'
-        maven-version: '3.8.7'
+        java-version: '17'
+        maven-version: '3.9.6'
         
     - name: Create Custom settings xml
       uses: whelk-io/maven-settings-xml-action@v20
