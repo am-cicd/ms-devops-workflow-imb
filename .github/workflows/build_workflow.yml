@@ -134,6 +134,12 @@ jobs:
       env:
         GIT_WORKSPACE1: ${{ toJSON(github.workspace) }}
       run: echo "$GIT_WORKSPACE1"
+      
+    - name: listing
+      env:
+        GIT_WORKSPACE1: ${{ toJSON(github.workspace) }}
+      run: |
+        ls
            
     - name: Run script
       run: |
