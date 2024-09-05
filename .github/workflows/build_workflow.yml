@@ -108,6 +108,16 @@ jobs:
     - name: Maven Version
       run: mvn -version
 
+    - name: Get artifactId from pom.xml
+      run: |
+        ARTIFACT_ID=$(grep -oPm1 "(?<=<artifactId>)[^<]+" pom.xml)
+        echo "ARTIFACT_ID=$ARTIFACT_ID"  >> $GITHUB_ENV
+    
+    - name: Get version from pom.xml
+      run: |
+        VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" pom.xml)
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+
     - name: Package the application
       if: ${{ github.event.ref == 'refs/heads/develop' }}
       run: mvn clean package -B -s .m2/settings.xml -Denv=${{ vars.APPLICATION_ENV }} -Dsecure.key.imb=${{ secrets.SECURE_ENCRYPT_KEY }}
