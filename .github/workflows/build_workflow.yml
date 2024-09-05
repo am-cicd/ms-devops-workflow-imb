@@ -53,6 +53,11 @@ jobs:
         path: deployment-scripts
         ref: main
         token: ${{ secrets.MULE_PAT }}
+        
+    - name : list deploy scripts
+      run: |
+        ls /home/runner/work/test-mule-app/test-mule-app/deployment-scripts
+     
           
     - name : checkout config
       uses: actions/checkout@v3
