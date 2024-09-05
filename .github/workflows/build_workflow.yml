@@ -20,6 +20,8 @@ on:
         required: true
       MULE_NEXUS_REPO_EE_PWD:
         required: true
+      MULE_PAT:
+        required: true
 
 jobs:
   build:
