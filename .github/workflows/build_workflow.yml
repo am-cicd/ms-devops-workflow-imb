@@ -144,8 +144,8 @@ jobs:
       env:
         GIT_WORKSPACE1: ${{ toJSON(github.workspace) }}
       run: |
-        cd /home/runner/work/test-mule-app/test-mule-app/deployment-scripts
-        ls
+        ls /home/runner/work/test-mule-app/test-mule-app/deployment-scripts
+        
            
     - name: Run script
       run: |
