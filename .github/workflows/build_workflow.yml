@@ -107,6 +107,14 @@ jobs:
 
     - name: Maven Version
       run: mvn -version
+
+    - name: Package the application
+      if: ${{ github.event.ref == 'refs/heads/develop' }}
+      run: mvn clean package -B -s .m2/settings.xml -Denv=${{ vars.APPLICATION_ENV }} -Dsecure.key.imb=${{ secrets.SECURE_ENCRYPT_KEY }}
+
+    - name: list on application
+      run: |
+        ls /home/runner/work/test-mule-app/test-mule-app
       
     - uses: actions/setup-python@v5
       with:
