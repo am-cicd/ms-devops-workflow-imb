@@ -114,7 +114,7 @@ jobs:
 
     - name: list on application
       run: |
-        ls /home/runner/work/test-mule-app/test-mule-app
+        ls /home/runner/work/test-mule-app/test-mule-app/target
       
     - uses: actions/setup-python@v5
       with:
