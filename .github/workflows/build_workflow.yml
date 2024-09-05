@@ -45,27 +45,6 @@ jobs:
     - uses: actions/checkout@v3
       with:
         ref: ${{ github.event.ref}}
-
-    - name : checkout deploy scripts
-      uses: actions/checkout@v3
-      with:
-        repository: am-cicd/ms-deploy-scripts
-        path: deployment-scripts
-        ref: main
-        token: ${{ secrets.MULE_PAT }}
-        
-    - name : list deploy scripts
-      run: |
-        ls /home/runner/work/test-mule-app/test-mule-app/deployment-scripts
-     
-          
-    - name : checkout config
-      uses: actions/checkout@v3
-      with:
-        repository: am-cicd/ms-env-config
-        path: environment-config
-        ref: main
-        token: ${{ secrets.MULE_PAT }}
           
     - name: Set up JDK 17
       uses: actions/setup-java@v3
@@ -135,16 +114,26 @@ jobs:
           
     - run: pip install pyyaml requests boto3 ruamel_yaml
 
-    - name: Dump GitHub workspace
-      env:
-        GIT_WORKSPACE1: ${{ toJSON(github.workspace) }}
-      run: echo "$GIT_WORKSPACE1"
-      
-    - name: listing
-      env:
-        GIT_WORKSPACE1: ${{ toJSON(github.workspace) }}
+    - name : checkout deploy scripts
+      uses: actions/checkout@v3
+      with:
+        repository: am-cicd/ms-deploy-scripts
+        path: deployment-scripts
+        ref: main
+        token: ${{ secrets.MULE_PAT }}     
+          
+    - name : checkout config
+      uses: actions/checkout@v3
+      with:
+        repository: am-cicd/ms-env-config
+        path: environment-config
+        ref: main
+        token: ${{ secrets.MULE_PAT }}
+            
+    - name : list paths
       run: |
         ls /home/runner/work/test-mule-app/test-mule-app/deployment-scripts
+        ls /home/runner/work/test-mule-app/test-mule-app/environment-config
         
            
     - name: Run script
